@@ -5,7 +5,7 @@ import 'package:flutter_cube/flutter_cube.dart';
 class ProductCard extends StatefulWidget {
   final AnimationController controller;
   ProductModel product;
-  const ProductCard(
+  ProductCard(
       {super.key, required this.controller, required this.product});
 
   @override
@@ -32,22 +32,25 @@ class _ProductCardState extends State<ProductCard> {
       );
 
   Widget objectModel(Size size, String asset) {
-    return SizedBox(
-      height: size.height,
-      width: size.width,
-      child: Cube(
-        interactive: true,
-        onSceneCreated: (scene) {
-          scene.camera.position.z = 10;
-          scene.world.add(
-            Object(
-              fileName: asset,
-              lighting: true,
-              scale: Vector3(10, 10, 10),
-              position: Vector3(0, 0, 0),
-            ),
-          );
-        },
+    return Align(
+      alignment: Alignment.centerRight,
+      child: SizedBox(
+        height: size.height,
+        width: size.width,
+        child: Cube(
+          interactive: true,
+          onSceneCreated: (scene) {
+            scene.camera.position.z = 10;
+            scene.world.add(
+              Object(
+                fileName: asset,
+                lighting: true,
+                scale: Vector3(10, 10, 10),
+                position: Vector3(0, 0, 0),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
@@ -55,8 +58,24 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     final controller = widget.controller;
+    final product = widget.product;
     final Size screenSize = MediaQuery.sizeOf(context);
 
-    return const Placeholder();
+    return Container(
+      height: screenSize.height * 0.4,
+      width: screenSize.width * 0.8,
+      decoration: BoxDecoration(
+        color: product.color,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          titleText(product.title),
+          priceText(product.price),
+          objectModel(Size(screenSize.width*0.3, screenSize.height*0.3), product.asset),
+        ],
+      )
+    );
   }
 }
