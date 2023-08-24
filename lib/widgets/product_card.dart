@@ -1,18 +1,16 @@
+import 'dart:math' as math;
+
 import 'package:commerce_animation_casestudy/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cube/flutter_cube.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class ProductCard extends StatefulWidget {
+class ProductCard extends StatelessWidget {
   final AnimationController controller;
   ProductModel product;
   ProductCard(
       {super.key, required this.controller, required this.product});
 
-  @override
-  State<ProductCard> createState() => _ProductCardState();
-}
-
-class _ProductCardState extends State<ProductCard> {
   Widget titleText(String text) => Text(
         text,
         style: TextStyle(
@@ -47,6 +45,7 @@ class _ProductCardState extends State<ProductCard> {
                 lighting: true,
                 scale: Vector3(10, 10, 10),
                 position: Vector3(0, 0, 0),
+                rotation: Vector3(0, controller.value * 2 * math.pi, 0),
               ),
             );
           },
@@ -57,8 +56,6 @@ class _ProductCardState extends State<ProductCard> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = widget.controller;
-    final product = widget.product;
     final Size screenSize = MediaQuery.sizeOf(context);
 
     return Container(
