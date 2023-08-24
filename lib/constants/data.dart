@@ -10,7 +10,7 @@ class Data{
     },
     {
       'title': 'Nike Sail',
-      'price': 35000,
+      'price': 35000.00,
       'color': Colors.blueGrey[100],
       'asset': 'assets/nike_sail.stl',
     },

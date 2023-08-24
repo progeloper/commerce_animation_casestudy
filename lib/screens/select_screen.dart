@@ -11,7 +11,7 @@ class SelectScreen extends StatefulWidget {
 }
 
 class _SelectScreenState extends State<SelectScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
   List<AnimationController> _controllers = [];
 
@@ -42,12 +42,16 @@ class _SelectScreenState extends State<SelectScreen>
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.sizeOf(context);
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          PageView(
-            children: _children,
+          SizedBox(
+            height: screenSize.height * 0.4,
+            child: PageView(
+              children: _children,
+            ),
           ),
         ],
       ),
