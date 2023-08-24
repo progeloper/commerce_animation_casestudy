@@ -43,9 +43,11 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - assets/nike_sail.stl
-    - assets/nike_supreme.obj
-    - assets/air_jordans_retro.obj
+    - assets/nike-air-max-sneakers.png
+    - assets/nike-air-force.png
+    - assets/nike-air-max.png
+    - assets/nike-air-max-270.png
+    - assets/nike-running-shoes.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
