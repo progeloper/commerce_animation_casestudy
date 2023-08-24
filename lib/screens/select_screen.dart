@@ -10,32 +10,23 @@ class SelectScreen extends StatefulWidget {
   State<SelectScreen> createState() => _SelectScreenState();
 }
 
-class _SelectScreenState extends State<SelectScreen>
-    with TickerProviderStateMixin {
+class _SelectScreenState extends State<SelectScreen> {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
-  List<AnimationController> _controllers = [];
 
   @override
   void initState() {
     super.initState();
-    Data.products.forEach((element) {
-      _controllers.add(
-        AnimationController(vsync: this, duration: const Duration(seconds: 10)),
-      );
-    });
+
   }
 
   @override
   void dispose() {
-    _controllers.forEach((element) {
-      element.dispose();
-    });
+    super.dispose();
   }
 
   List<ProductCard> get _children => List.generate(
         Data.products.length,
         (index) => ProductCard(
-          controller: _controllers[index],
           product: ProductModel.fromMap(Data.products[index]),
         ),
       );
@@ -52,8 +43,11 @@ class _SelectScreenState extends State<SelectScreen>
             children: [
               SizedBox(
                 height: screenSize.height * 0.4,
-                child: PageView(
-                  children: _children,
+                child: PageView.builder(
+                  itemCount: _children.length,
+                  itemBuilder: (context, index){
+                    return _children[index];
+                  },
                 ),
               ),
             ],
