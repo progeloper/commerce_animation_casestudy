@@ -43,7 +43,7 @@ class ProductCard extends StatelessWidget {
               Object(
                 fileName: asset,
                 lighting: true,
-                scale: Vector3(10, 10, 10),
+                scale: Vector3(7, 7, 7),
                 position: Vector3(0, 0, 0),
                 rotation: Vector3(0, controller.value * 2 * math.pi, 0),
               ),
@@ -65,13 +65,16 @@ class ProductCard extends StatelessWidget {
         color: product.color,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          titleText(product.title),
-          priceText(product.price),
-          objectModel(Size(screenSize.width*0.3, screenSize.height*0.3), product.asset),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            titleText(product.title),
+            priceText(product.price),
+            objectModel(Size(screenSize.width*0.5, screenSize.height*0.4), product.asset),
+          ],
+        ),
       )
     );
   }

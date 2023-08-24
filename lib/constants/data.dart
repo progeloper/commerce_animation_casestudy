@@ -18,7 +18,7 @@ class Data{
       'title': 'NikexSupreme Uptempo',
       'price': 89999.99,
       'color': Colors.red[300],
-      'asset': 'assets/nike_supreme.stl',
+      'asset': 'assets/nike_supreme.obj',
     },
   ];
 }

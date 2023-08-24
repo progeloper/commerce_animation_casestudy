@@ -44,7 +44,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/nike_sail.stl
-    - assets/nike_supreme.stl
+    - assets/nike_supreme.obj
     - assets/air_jordans_retro.obj
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -44,16 +44,21 @@ class _SelectScreenState extends State<SelectScreen>
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.sizeOf(context);
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: screenSize.height * 0.4,
-            child: PageView(
-              children: _children,
-            ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: screenSize.height * 0.4,
+                child: PageView(
+                  children: _children,
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
